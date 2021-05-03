@@ -7,8 +7,9 @@ import BranchInfo from './components/BranchInfo.vue';
 import WrongPassword from './components/WrongPassword.vue';
 import PlsDont from './components/PlsDont.vue';
 import Register from './components/Register.vue';
+import MaintenanceForm from './components/MaintenanceForm.vue';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false 
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -66,7 +67,12 @@ const router = new VueRouter({
         path: "/register",
         name: "register",
         component: Register
-      }      
+      },
+      {
+        path: "/maintenanceform",
+        name: "maintenanceform",
+        component: MaintenanceForm
+      }        
     ]
 }
 );
