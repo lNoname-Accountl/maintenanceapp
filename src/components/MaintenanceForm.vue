@@ -11,8 +11,10 @@
     </select>
   <label>Your Machine</label>
   <select v-model = "tempMach" >
-    <option value="computer" >Computer</option>
-    <option value="refrigerator">Tuyen</option> 
+    <option value="Electronic" >Electronic</option>
+    <option value="Home Appliance ">Home Appliance</option>
+    <option value="Heavy Duty Machine">Heavy Duty Machine</option>
+    <option value="Tools">Tools</option>
   </select>
   <div v-for = "machine in machines" :key = "machine" class = "pill">
   <span @click = "deleteMach(machine)">{{ machine }}</span>
@@ -21,6 +23,10 @@
   <button @click= "addMach()">add</button>
   
   <p>Plan : {{ plan }}</p>
+  <br>
+    <div class="submit">
+      <button>Submit request</button>
+    </div>
   </form>
 </template>
 

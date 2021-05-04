@@ -8,6 +8,8 @@ import WrongPassword from './components/WrongPassword.vue';
 import PlsDont from './components/PlsDont.vue';
 import Register from './components/Register.vue';
 import MaintenanceForm from './components/MaintenanceForm.vue';
+import HomePage from './components/HomePage.vue';
+import AboutUs from './components/AboutUs.vue';
 
 Vue.config.productionTip = false 
 
@@ -33,7 +35,7 @@ const router = new VueRouter({
       {
         path: "/",
         redirect: {
-            name : "login"
+            name : "homepage"
         }
       },
       {
@@ -72,7 +74,18 @@ const router = new VueRouter({
         path: "/maintenanceform",
         name: "maintenanceform",
         component: MaintenanceForm
-      }        
+      },
+      {
+        path: "/homepage",
+        name: "homepage",
+        component: HomePage
+      },
+      {
+        path: "/aboutus",
+        name: "aboutus",
+        component: AboutUs
+      }
+
     ]
 }
 );
