@@ -1,7 +1,7 @@
 <template>
   <form>
     <header>
-      <h3>Header</h3>
+      <h3>Staff Form</h3>
     </header>
     <br>a
     <label>Full Name:</label>
@@ -99,7 +99,7 @@ form{
   border-radius: 10px;
 }
 
-label, header{
+label{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: rgb(0, 0, 0);
   display: inline-block;

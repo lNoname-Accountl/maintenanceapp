@@ -10,6 +10,7 @@ import Register from './components/Register.vue';
 import MaintenanceForm from './components/MaintenanceForm.vue';
 import HomePage from './components/HomePage.vue';
 import AboutUs from './components/AboutUs.vue';
+import MaintenanceLog from './components/MaintenanceLog.vue';
 
 Vue.config.productionTip = false 
 
@@ -84,6 +85,11 @@ const router = new VueRouter({
         path: "/aboutus",
         name: "aboutus",
         component: AboutUs
+      },
+      {
+        path: "/maintenancelog",
+        name: "maintenancelog",
+        component: MaintenanceLog
       }
 
     ]

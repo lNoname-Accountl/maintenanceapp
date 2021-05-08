@@ -23,7 +23,7 @@
             login(){
                 if(this.input.username == "manager" && this.input.password == "123") {
                     this.$store.commit("setAuthentication",true);
-                    this.$router.replace({name:"homepage"});
+                    this.$router.replace({name:"maintenancelog"});
                 } else {
                     console.log("wrong password or username");
                     this.$router.replace({name:"wrongpassword"});

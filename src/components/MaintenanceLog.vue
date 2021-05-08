@@ -1,47 +1,43 @@
 <template>
-  <form>
-    
-  <label>Branch ID</label>
-  <input type="text" required v-model = "branchid" >
-
-  <label>Branch Name</label>
-  <input type="text" required v-model = "branchname" >
-
-  <label>Branch Phone</label>
-  <input type="text" required v-model = "branchphone" >
-
-  <label>Branch Address</label>
-  <input type="text" required v-model = "branchaddress" >
-
+  
+  <form >
+    <header>
+      <h3>Maintenance Log</h3>
+    </header>
+  <br>
+  <label>Maintenance Date</label>
+  <input type="date" v-model="date">
+  <label>Machine ID</label>
+  <input type="text" v-model = "machineid">
+  <label>Description</label>
+  <input type="text" v-model = "description">
+  <label>Next Maintenance</label>
+  <input type="date" v-model = "nextdate">
   <br>
     <div class="submit">
-      <button>Submit branch information</button>
+      <button>Submit request</button>
     </div>
-
-   <p>ID : {{ branchid }}</p>
-    <p>Name. : {{ branchname }}</p>
-    <p>Phone. : {{ branchphone }}</p>
-    <p>Address : {{ branchaddress }}</p>
- 
-
-
+  
+  
   </form>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            branchid : '',
-            branchname : '',
-            branchphone : '',
-            branchaddress : ''
-        }
-    }
+  data(){
+      return{
+      date : '',
+      machineid: '',
+      description:'',
+      nextdate:''
+      }
+  }
+
 }
 </script>
 
 <style>
+
 #one{
   color: rgba(255, 255, 255, 0.931);
   display: inline-block;
@@ -52,11 +48,13 @@ export default {
 }
 
 form{
-  max-width: 420px;
-  margin: 30px;
+  max-width: 400px;
+  position: relative;
+  left:570px;
+  margin: 10px;
   background: rgb(209, 205, 205);
   text-align: left;
-  padding: 40px;
+  padding: 50px;
   border-radius: 10px;
 }
 
@@ -70,7 +68,17 @@ label{
   font-weight: regular;
 }
 
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: regular;
+}
 input, select, option{
+
   display: block;
   padding: 10px 6px;
   width: 100%;
@@ -92,7 +100,6 @@ input[type="radio"]{
 }
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
   background: rgba(23, 64, 246, 0.924);
   border: 0;
   padding: 10px 20px;
@@ -100,10 +107,5 @@ button{
   color: white;
   border-radius: 20px;
   
-}
-
-.submit{
-
-    text-align: center;
 }
 </style>
