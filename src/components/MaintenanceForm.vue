@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
         return {
@@ -49,6 +50,20 @@ export default {
         this.machines = this.machines.filter((item) =>{
           return machine !== item
         })
+      },
+      create(){
+        return axios.post("http://localhost:8080/api/create", 
+         {
+             machines : this.machines,
+             plan : this.plan
+            }).then((response) => {
+              
+              console.log(response.data)
+              
+            })
+
+        
+
       }
       }
     }
