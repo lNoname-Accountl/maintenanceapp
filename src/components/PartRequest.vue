@@ -1,25 +1,19 @@
 <template>
   <form>
-    
-
-
-  <label>Branch Name</label>
-  <input type="text" required v-model = "branch_name" >
-
-  <label>Branch Phone</label>
-  <input type="text" required v-model = "branch_phone" >
-
-  <label>Branch Address</label>
-  <input type="text" required v-model = "branch_address" >
-
+  <label>Part ID that need replacement</label>
+  <input type="number" v-model = "partid" required>
+  <label>Request by Staff ID</label>
+  <input type="number" v-model = "staffid" required>
+  <label>Reason for requesting</label>
+    <select v-model = "reason" required>
+    <option value="Broken">Part is broken </option>
+    <option value="Old">Part is old </option>
+    <option value="Customer Request">Customer requested </option>
+    </select>
   <br>
-    <div class="submit" @click= "postB()">
-      <button>Submit branch information</button>
+    <div class="submit">
+      <button>Submit request</button>
     </div>
-
- 
-
-
   </form>
 </template>
 
@@ -28,18 +22,18 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            branch_name : '',
-            branch_phone : '',
-            branch_address : ''
+            partid : '',
+            staffid : '',
+            reason : ''
         }
     },
     methods : {
-      postB(){
-        return axios.post("http://localhost:3000/api/branch/create", 
+        create(){
+        return axios.post("http://localhost:8080/api/maintenance/create", 
          {
-             branch_name : this.branch_name,
-             branch_phone : this.branch_phone,
-             branch_address : this.branch_address
+             partid : this.partid,
+             staffid : this.staffid,
+             reason : this.reason
             }).then((response) => {
               
               console.log(response.data)
@@ -50,10 +44,13 @@ export default {
 
       }
     }
+
 }
 </script>
 
+
 <style>
+
 #one{
   color: rgba(255, 255, 255, 0.931);
   display: inline-block;
@@ -64,11 +61,13 @@ export default {
 }
 
 form{
-  max-width: 420px;
-  margin: 30px;
+  max-width: 400px;
+  position: relative;
+  left:570px;
+  margin: 10px;
   background: rgb(209, 205, 205);
   text-align: left;
-  padding: 40px;
+  padding: 50px;
   border-radius: 10px;
 }
 
@@ -82,7 +81,17 @@ label{
   font-weight: regular;
 }
 
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: regular;
+}
 input, select, option{
+
   display: block;
   padding: 10px 6px;
   width: 100%;
@@ -104,7 +113,6 @@ input[type="radio"]{
 }
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
   background: rgba(23, 64, 246, 0.924);
   border: 0;
   padding: 10px 20px;
@@ -112,10 +120,5 @@ button{
   color: white;
   border-radius: 20px;
   
-}
-
-.submit{
-
-    text-align: center;
 }
 </style>

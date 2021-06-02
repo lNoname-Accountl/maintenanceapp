@@ -20,13 +20,13 @@ export default {
     },
     methods: {
        login(){
-       this.$router.replace({name:"login"});
+       this.$router.replace({name:"branchinfo"});
        },
        register(){
-       this.$router.replace({name:"register"});
+       this.$router.replace({name:"maintenancelog"});
        },
        aboutus(){
-       this.$router.replace({name:"aboutus"});
+       this.$router.replace({name:"partinfo"});
        },
        home(){
 

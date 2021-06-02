@@ -1,14 +1,40 @@
-<template>
-  <form >
-  <label>Receipt Number</label>
-  <input type="number" v-model= "receipt" required>
+-<template>
+  <form>
   <label>Service ID</label>
-  <input type="number" v-model = "sid" required>
-  <label>Date</label>
-  <input type="date" v-model = "date" required>
+  <input type="number" v-model = "serviceid" required>
+  <label>Repair Completeness Score</label>
+    <select v-model = "repairscore" required>
+    <option value="" disabled selected>Select your plan</option>
+    <option value="1">1</option>
+    <option value="2">2 </option>
+    <option value="3">3 </option>
+    <option value="4">4 </option>
+    <option value="5">5 </option>
+    </select>
+  <label>Service Score</label>
+    <select v-model = "servicescore" required>
+    <option value="" disabled selected>Select your plan</option>
+    <option value="1">1</option>
+    <option value="2">2 </option>
+    <option value="3">3 </option>
+    <option value="4">4 </option>
+    <option value="5">5 </option>
+    </select>
+  <label>Overall Score</label>
+    <select v-model = "overallscore" required>
+    <option value="" disabled selected>Select your plan</option>
+    <option value="1">1</option>
+    <option value="2">2 </option>
+    <option value="3">3 </option>
+    <option value="4">4 </option>
+    <option value="5">5 </option>
+    </select>
+
+  <label>Other Comment</label>
+  <input type="text" v-model = "comment">
   <br>
     <div class="submit">
-      <button>Submit payment</button>
+      <button>Submit Feedback</button>
     </div>
   </form>
 </template>
@@ -16,23 +42,26 @@
 <script>
 import axios from 'axios';
 export default {
-    data(){
-        return{
-             receipt:'',
-             sid:'',
-             date: ''
-            
-        }
-       
-        
-    },
-    methods: {
-      create(){
+  data() {
+    return{
+      serviceid : '',
+      repairscore : '',
+      servicescore : '',
+      overallscore : '',
+      comment : ''
+      
+    }
+
+
+  },
+  create(){
         return axios.post("http://localhost:8080/api/maintenance/create", 
          {
-             receipt : this.receipt,
-             sid : this.sid,
-             date : this.date
+             serviceid : this.serviceid,
+             repairscore : this.repairscore,
+             servicescore : this.servicescore,
+             overallscore : this.overallscore,
+             comment : this.comment
             }).then((response) => {
               
               console.log(response.data)
@@ -44,20 +73,12 @@ export default {
       }
     }
 
-}
-</script>
 
+</script>
 
 <style>
 
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
+
 
 form{
   max-width: 400px;

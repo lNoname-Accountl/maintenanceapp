@@ -1,26 +1,24 @@
 <template>
-  <form>
-    
-
-
-  <label>Branch Name</label>
-  <input type="text" required v-model = "branch_name" >
-
-  <label>Branch Phone</label>
-  <input type="text" required v-model = "branch_phone" >
-
-  <label>Branch Address</label>
-  <input type="text" required v-model = "branch_address" >
-
-  <br>
-    <div class="submit" @click= "postB()">
-      <button>Submit branch information</button>
+<form>
+<label>First Name</label>
+<input type="text" required v-model="firstname">
+<label>Last Name</label>
+<input type="text" required v-model="lastname">
+<label>Phone Number</label>
+<input type="number" required v-model = "phonenumber">
+<label>Credit Card Type</label>
+    <select v-model = "credittype" required>
+      <option value="" disabled selected>Select your plan</option>
+      <option value="visa">Visa </option>
+      <option value="mastercard">Master Card </option>
+    </select>
+<label>Expiration Date</label>
+<input type="date" v-model = "expiredate" required>
+<br>
+    <div class="submit">
+      <button>Submit Info</button>
     </div>
-
- 
-
-
-  </form>
+</form>
 </template>
 
 <script>
@@ -28,18 +26,23 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            branch_name : '',
-            branch_phone : '',
-            branch_address : ''
+            firstname : '',
+            lastname : '',
+            phonenumber : '',
+            credittype : '',
+            expiredate : ''
+         
         }
     },
     methods : {
-      postB(){
-        return axios.post("http://localhost:3000/api/branch/create", 
+        create(){
+        return axios.post("http://localhost:8080/api/maintenance/create", 
          {
-             branch_name : this.branch_name,
-             branch_phone : this.branch_phone,
-             branch_address : this.branch_address
+             firstname : this.firstname,
+             lastname : this.lastname,
+             phonenumber : this.phonenumber,
+             credittype : this.credittype,
+             expiredate : this.expiredate
             }).then((response) => {
               
               console.log(response.data)
@@ -50,10 +53,12 @@ export default {
 
       }
     }
+
 }
 </script>
 
 <style>
+
 #one{
   color: rgba(255, 255, 255, 0.931);
   display: inline-block;

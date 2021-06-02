@@ -11,6 +11,13 @@ import MaintenanceForm from './components/MaintenanceForm.vue';
 import HomePage from './components/HomePage.vue';
 import AboutUs from './components/AboutUs.vue';
 import MaintenanceLog from './components/MaintenanceLog.vue';
+import PartRequest from './components/PartRequest.vue';
+import PartInfo from './components/PartInfo.vue';
+import EmergencyRepair from './components/EmergencyRepair.vue';
+import CustomerInfo from './components/CustomerInfo.vue';
+import StaffForm from './components/StaffForm.vue';
+import Feedback from './components/Feedback.vue';
+import Payment from './components/Payment.vue';
 
 Vue.config.productionTip = false 
 
@@ -48,13 +55,6 @@ const router = new VueRouter({
           path: "/branchinfo",
           name: "branchinfo",
           component: BranchInfo,
-          beforeEnter: (to, from, next) =>{
-              if(store.state.authenticated == false){
-                  next("/plsdont");
-              } else{
-                  next();
-              }
-          }
       },
       {
           path: "/wrongpasswrod",
@@ -90,7 +90,43 @@ const router = new VueRouter({
         path: "/maintenancelog",
         name: "maintenancelog",
         component: MaintenanceLog
+      },
+      {
+        path: "/partrequest",
+        name: "partrequest",
+        component: PartRequest
+      },
+      {
+        path: "/partinfo",
+        name: "partinfo",
+        component: PartInfo
+      },
+      {
+        path: "/emergencyrepair",
+        name: "emergencyrepair",
+        component: EmergencyRepair
+      },
+      {
+        path: "/customerinfo",
+        name: "customerinfo",
+        component: CustomerInfo
+      },
+      {
+        path: "/staffform",
+        name: "staffform",
+        component: StaffForm
+      },
+      {
+        path: "/feedback",
+        name: "feedback",
+        component: Feedback
+      },
+      {
+        path: "/payment",
+        name: "payment",
+        component: Payment
       }
+      
 
     ]
 }

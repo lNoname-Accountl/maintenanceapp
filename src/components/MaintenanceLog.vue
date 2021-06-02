@@ -6,16 +6,20 @@
     </header>
   <br>
   <label>Maintenance Date</label>
-  <input type="date" v-model="date">
+  <input type="date" v-model="date" required>
   <label>Machine ID</label>
-  <input type="text" v-model = "machineid">
+  <input type="text" v-model = "machineid" required>
   <label>Description</label>
-  <input type="text" v-model = "description">
+  <input type="text" v-model = "description" required>
   <label>Next Maintenance</label>
-  <input type="date" v-model = "nextdate">
+  <input type="date" v-model = "nextdate" required>
+  <label>Error Description</label>
+  <input type="text" v-model = "errordescription" required>
+  <label>Managed by Staff ID</label>
+  <input type="number" v-model = "staffid" required>
   <br>
     <div class="submit">
-      <button>Submit request</button>
+      <button>Submit Maintenance Report</button>
     </div>
   
   
@@ -23,14 +27,39 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data(){
       return{
       date : '',
       machineid: '',
       description:'',
-      nextdate:''
+      nextdate:'',
+      errordescription:'',
+      staffid : ''
       }
+  },
+  methods : {
+    create(){
+        return axios.post("http://localhost:8080/api/maintenance/create", 
+         {
+             date : this.date,
+             machineid : this.machineid,
+             description : this.description,
+             nextdate : this.nextdate,
+             errordescription : this.errordescription,
+             staffid : this.staffid
+
+            }).then((response) => {
+              
+              console.log(response.data)
+              
+            })
+
+        
+
+      }
+    
   }
 
 }

@@ -3,7 +3,7 @@
     <header>
       <h3>Staff Form</h3>
     </header>
-    <br>a
+    <br>
     <label>Full Name:</label>
     <input type = "text" required v-model = "fullname">
 
@@ -28,7 +28,6 @@
     <select v-model = "role">
       <option value="Manager">Manager </option>
       <option value="Technician">Technician </option>
-
       <option value="Staff">Staff </option>
 
     </select>
@@ -49,20 +48,12 @@
       <button>Submit employee information</button>
     </div>
 
-    <p>FullName : {{ fullname }}</p>
-    <p>IDNo. : {{ idno }}</p>
-    <p>Role. : {{ role }}</p>
-    <p>Address : {{ address }}</p>
-    <p>Gender : {{ gender }}</p>
-    <p>Email : {{ email }}</p>
-    <p>PhoneNumber : {{ phone }}</p>
-    <p>Branch : {{ branch }}</p>
-
   </form>
   
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -75,6 +66,27 @@ export default {
             phone : '',
             branch : ''
         }
+    },
+    methods : { create(){
+        return axios.post("http://localhost:8080/api/staff/create", 
+         {
+           fullname : this.fullname,
+            idno : this.idno,
+            role: this.role,
+            address : this.address,
+            gender: this.gender,
+            email : this.email,
+            phone : this.phone,
+            branch : this.branch
+            }).then((response) => {
+              
+              console.log(response.data)
+              
+            })
+
+        
+
+      }
     }
 }
 </script>
