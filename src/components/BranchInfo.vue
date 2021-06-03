@@ -2,7 +2,10 @@
   <form>
     
 
-
+  <header>
+      <h3>Branch Information</h3>
+  </header>
+  <br>
   <label>Branch Name</label>
   <input type="text" required v-model = "branch_name" >
 
@@ -53,23 +56,19 @@ export default {
 }
 </script>
 
-<style>
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
+<style scoped>
+
 
 form{
   max-width: 420px;
   margin: 30px;
   background: rgb(209, 205, 205);
   text-align: left;
+  position: relative;
+  left: 570px;
   padding: 40px;
   border-radius: 10px;
+
 }
 
 label{
@@ -94,14 +93,16 @@ input, select, option{
 
 }
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
-
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: regular;
 }
+
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 

@@ -1,9 +1,12 @@
 -<template>
   <form>
+  <header>
+    <h3>Feedback</h3>
+  </header>
   <label>Service ID</label>
-  <input type="number" v-model = "serviceid" required>
+  <input type="number" v-model = "service_id" required>
   <label>Repair Completeness Score</label>
-    <select v-model = "repairscore" required>
+    <select v-model = "r_score" required>
     <option value="" disabled selected>Select your plan</option>
     <option value="1">1</option>
     <option value="2">2 </option>
@@ -12,7 +15,7 @@
     <option value="5">5 </option>
     </select>
   <label>Service Score</label>
-    <select v-model = "servicescore" required>
+    <select v-model = "s_score" required>
     <option value="" disabled selected>Select your plan</option>
     <option value="1">1</option>
     <option value="2">2 </option>
@@ -21,7 +24,7 @@
     <option value="5">5 </option>
     </select>
   <label>Overall Score</label>
-    <select v-model = "overallscore" required>
+    <select v-model = "all_score" required>
     <option value="" disabled selected>Select your plan</option>
     <option value="1">1</option>
     <option value="2">2 </option>
@@ -33,7 +36,7 @@
   <label>Other Comment</label>
   <input type="text" v-model = "comment">
   <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit Feedback</button>
     </div>
   </form>
@@ -44,23 +47,23 @@ import axios from 'axios';
 export default {
   data() {
     return{
-      serviceid : '',
-      repairscore : '',
-      servicescore : '',
-      overallscore : '',
+      service_id : '',
+      r_score : '',
+      s_score : '',
+      all_score : '',
       comment : ''
       
     }
 
 
   },
-  create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+  methods : {create(){
+        return axios.post("http://localhost:3000/api/feedback/create", 
          {
-             serviceid : this.serviceid,
-             repairscore : this.repairscore,
-             servicescore : this.servicescore,
-             overallscore : this.overallscore,
+             service_id : this.service_id,
+             r_score : this.r_score,
+             s_score : this.s_score,
+             all_score : this.all_score,
              comment : this.comment
             }).then((response) => {
               
@@ -72,11 +75,12 @@ export default {
 
       }
     }
+}
 
 
 </script>
 
-<style>
+<style scoped>
 
 
 
@@ -89,6 +93,7 @@ form{
   text-align: left;
   padding: 50px;
   border-radius: 10px;
+
 }
 
 label{
@@ -123,14 +128,6 @@ input, select, option{
 
 }
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
-
-}
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: rgba(23, 64, 246, 0.924);
@@ -140,5 +137,9 @@ button{
   color: white;
   border-radius: 20px;
   
+}
+.submit{
+
+    text-align: center;
 }
 </style>

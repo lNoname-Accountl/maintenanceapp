@@ -1,19 +1,22 @@
 <template>
   <form>
+  <header>
+    <h3>Emergency Repair</h3>
+  </header>
   <label>Machine ID</label>
-  <input type="number" v-model="machineid" required>
+  <input type="number" v-model="machine_id" required>
   <label>Date For Emergency Repair</label>
-  <input type="date" v-model="date" required>
+  <input type="date" v-model="e_date" required>
   <label>Reason For Emergency Repair</label>
-  <select v-model="reason" required>
+  <select v-model="e_reason" required>
     <option value="Sudden Malfunction">Sudden malfunction</option>
     <option value="Part Broken">Part broken during it's work time</option>
   </select>
   <label>Repair by Staff ID</label>
-  <input type="number" v-model="staffid" required>
+  <input type="number" v-model="staff_id" required>
 
   <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit</button>
     </div>
 
@@ -25,19 +28,20 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            machineid : '',
-            date : '',
-            reason : '',
-            staffid : ''
+            machine_id : '',
+            e_date : '',
+            e_reason : '',
+            staff_id : ''
         }
     },
+    methods:{
     create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+        return axios.post("http://localhost:3000/api/emergency/create", 
          {
-             machineid : this.machineid,
-             date : this.date,
-             reason : this.reason,
-             staffid : this.staffid
+             machine_id : this.machine_id,
+             e_date : this.e_date,
+             e_reason : this.e_reason,
+             staff_id : this.staff_id
             }).then((response) => {
               
               console.log(response.data)
@@ -47,22 +51,24 @@ export default {
         
 
       }
+    }
 
 }
 </script>
 
-<style>
+<style scoped>
 
 
 form{
-  max-width: 400px;
-  position: relative;
-  left:570px;
-  margin: 10px;
+  max-width: 420px;
+  margin: 30px;
   background: rgb(209, 205, 205);
   text-align: left;
-  padding: 50px;
+  padding: 40px;
   border-radius: 10px;
+  position: relative;
+  left: 570px;
+  
 }
 
 label{
@@ -76,13 +82,25 @@ label{
 }
 
 
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: regular;
+}
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
+input, select, option{
+  display: block;
+  padding: 10px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  border:none;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+  border-radius: 15px;
 
 }
 
@@ -95,5 +113,9 @@ button{
   color: white;
   border-radius: 20px;
   
+}
+.submit{
+
+    text-align: center;
 }
 </style>

@@ -1,21 +1,27 @@
 <template>
 <form>
+<header>
+  <h3>Customer Information</h3>
+</header>
+<br>
 <label>First Name</label>
-<input type="text" required v-model="firstname">
+<input type="text" required v-model="first_name">
 <label>Last Name</label>
-<input type="text" required v-model="lastname">
+<input type="text" required v-model="last_name">
 <label>Phone Number</label>
-<input type="number" required v-model = "phonenumber">
+<input type="text" required v-model = "phone_number">
 <label>Credit Card Type</label>
-    <select v-model = "credittype" required>
+    <select v-model = "credit_card_type" required>
       <option value="" disabled selected>Select your plan</option>
       <option value="visa">Visa </option>
       <option value="mastercard">Master Card </option>
     </select>
 <label>Expiration Date</label>
-<input type="date" v-model = "expiredate" required>
+<input type="date" v-model = "credit_card_exp " required>
+<label>Credit Card Number</label>
+<input type="number" required v-model = "credit_card_number">
 <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit Info</button>
     </div>
 </form>
@@ -26,23 +32,25 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            firstname : '',
-            lastname : '',
-            phonenumber : '',
-            credittype : '',
-            expiredate : ''
+            first_name : '',
+            last_name : '',
+            phone_number : '',
+            credit_card_type : '',
+            credit_card_exp  : '',
+            credit_card_number : ''
          
         }
     },
     methods : {
         create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+        return axios.post("http://localhost:3000/api/customer/create", 
          {
-             firstname : this.firstname,
-             lastname : this.lastname,
-             phonenumber : this.phonenumber,
-             credittype : this.credittype,
-             expiredate : this.expiredate
+             first_name : this.first_name,
+             last_name : this.last_name,
+             phone_number : this.phone_number,
+             credit_card_type : this.credit_card_type,
+             credit_card_exp : this.credit_card_exp,
+             credit_card_number : this.credit_card_number
             }).then((response) => {
               
               console.log(response.data)
@@ -57,16 +65,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
 
 form{
   max-width: 420px;
@@ -75,6 +75,19 @@ form{
   text-align: left;
   padding: 40px;
   border-radius: 10px;
+  position: relative;
+  left: 570px;
+  
+}
+
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  font-weight: regular;
 }
 
 label{
@@ -99,14 +112,7 @@ input, select, option{
 
 }
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
 
-}
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 

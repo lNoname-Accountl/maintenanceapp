@@ -4,12 +4,15 @@
       <h3>Staff Form</h3>
     </header>
     <br>
-    <label>Full Name:</label>
-    <input type = "text" required v-model = "fullname">
+    <label>First Name: </label>
+    <input type = "text" required v-model = "first_name">
+
+    <label>Last Name: </label>
+    <input type="text" required v-model = "last_name">
 
 
     <label>ID No.:</label>
-    <input type= "number" required v-model = "idno">
+    <input type= "number" required v-model = "id_card">
     
     <label>Gender</label>
     <div>
@@ -25,10 +28,10 @@
     
 
     <label>Select Position</label>
-    <select v-model = "role">
-      <option value="Manager">Manager </option>
-      <option value="Technician">Technician </option>
-      <option value="Staff">Staff </option>
+    <select v-model = "position_id">
+      <option value= "M001" >Manager </option>
+      <option value= "T002">Technician </option>
+      <option value= "S003">Staff </option>
 
     </select>
 
@@ -39,12 +42,12 @@
     <input type="email" required v-model="email">
 
     <label>Phone Number:</label>
-    <input type="tel" v-model = "phone">
+    <input type="text" v-model = "phone">
 
     <label>Branch ID:</label>
-    <input type="text" v-model = "branch">
+    <input type="number" v-model = "branch_id">
     <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit employee information</button>
     </div>
 
@@ -57,30 +60,31 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            fullname : '',
-            idno : '',
-            role: '',
+            first_name : '',
+            last_name : '',
+            id_card : '',
+            position_id: '',
             address : '',
             gender:'',
             email : '',
             phone : '',
-            branch : ''
+            branch_id : ''
         }
     },
     methods : { create(){
-        return axios.post("http://localhost:8080/api/staff/create", 
+        return axios.post("http://localhost:3000/api/employee/create", 
          {
-           fullname : this.fullname,
-            idno : this.idno,
-            role: this.role,
+            first_name : this.first_name,
+            last_name : this.last_name,
+            id_card : this.id_card,
+            position_id: this.position_id,
             address : this.address,
             gender: this.gender,
             email : this.email,
             phone : this.phone,
-            branch : this.branch
+            branch_id : this.branch_id
             }).then((response) => {
-              
-              console.log(response.data)
+            console.log(response.data)
               
             })
 
@@ -91,24 +95,28 @@ export default {
 }
 </script>
 
-<style>
+<style scoped >
 
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
+h3{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: regular;
 }
 
 form{
-  max-width: 420px;
-  margin: 30px;
+  max-width: 400px;
+  position: relative;
+  left:570px;
+  margin: 10px;
   background: rgb(209, 205, 205);
   text-align: left;
-  padding: 40px;
+  padding: 50px;
   border-radius: 10px;
+
 }
 
 label{

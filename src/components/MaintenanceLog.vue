@@ -6,19 +6,17 @@
     </header>
   <br>
   <label>Maintenance Date</label>
-  <input type="date" v-model="date" required>
+  <input type="date" v-model="maintenance_date" required>
   <label>Machine ID</label>
-  <input type="text" v-model = "machineid" required>
+  <input type="text" v-model = "machine_id" required>
   <label>Description</label>
   <input type="text" v-model = "description" required>
-  <label>Next Maintenance</label>
-  <input type="date" v-model = "nextdate" required>
   <label>Error Description</label>
-  <input type="text" v-model = "errordescription" required>
+  <input type="text" v-model = "error_description" required>
   <label>Managed by Staff ID</label>
-  <input type="number" v-model = "staffid" required>
+  <input type="number" v-model = "staff_id" required>
   <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit Maintenance Report</button>
     </div>
   
@@ -31,24 +29,22 @@ import axios from 'axios';
 export default {
   data(){
       return{
-      date : '',
-      machineid: '',
+      maintenance_date : '',
+      machine_id: '',
       description:'',
-      nextdate:'',
-      errordescription:'',
-      staffid : ''
+      error_description:'',
+      staff_id : ''
       }
   },
   methods : {
     create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+        return axios.post("http://localhost:3000/api/maintenancelog/create", 
          {
-             date : this.date,
-             machineid : this.machineid,
+             maintenance_date : this.maintenance_date,
+             machine_id : this.machine_id,
              description : this.description,
-             nextdate : this.nextdate,
-             errordescription : this.errordescription,
-             staffid : this.staffid
+             error_description : this.error_description,
+             staff_id : this.staff_id
 
             }).then((response) => {
               
@@ -65,16 +61,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
+
 
 form{
   max-width: 400px;
@@ -85,6 +74,7 @@ form{
   text-align: left;
   padding: 50px;
   border-radius: 10px;
+
 }
 
 label{
@@ -119,14 +109,6 @@ input, select, option{
 
 }
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
-
-}
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: rgba(23, 64, 246, 0.924);
@@ -136,5 +118,9 @@ button{
   color: white;
   border-radius: 20px;
   
+}
+.submit{
+
+    text-align: center;
 }
 </style>

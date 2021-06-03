@@ -1,13 +1,17 @@
 <template>
   <form >
+    <header>
+      <h3>Payment</h3>
+    </header>
+    <br>
   <label>Receipt Number</label>
-  <input type="number" v-model= "receipt" required>
+  <input type="number" v-model= "receipt_number" required>
   <label>Service ID</label>
-  <input type="number" v-model = "sid" required>
+  <input type="number" v-model = "service_id" required>
   <label>Date</label>
-  <input type="date" v-model = "date" required>
+  <input type="date" v-model = "receipt_date" required>
   <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit payment</button>
     </div>
   </form>
@@ -18,9 +22,9 @@ import axios from 'axios';
 export default {
     data(){
         return{
-             receipt:'',
-             sid:'',
-             date: ''
+             receipt_number:'',
+             service_id:'',
+             receipt_date: ''
             
         }
        
@@ -28,11 +32,11 @@ export default {
     },
     methods: {
       create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+        return axios.post("http://localhost:3000/api/receipt/create", 
          {
-             receipt : this.receipt,
-             sid : this.sid,
-             date : this.date
+             receipt_number : this.receipt_number,
+             service_id : this.service_id,
+             receipt_date : this.receipt_date
             }).then((response) => {
               
               console.log(response.data)
@@ -48,7 +52,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped >
 
 #one{
   color: rgba(255, 255, 255, 0.931);
@@ -68,6 +72,7 @@ form{
   text-align: left;
   padding: 50px;
   border-radius: 10px;
+
 }
 
 label{
@@ -119,5 +124,9 @@ button{
   color: white;
   border-radius: 20px;
   
+}
+.submit{
+
+    text-align: center;
 }
 </style>

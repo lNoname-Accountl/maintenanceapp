@@ -1,17 +1,21 @@
 <template>
   <form>
+    <header>
+      <h3>Parts Request</h3>
+    </header>
+    <br>
   <label>Part ID that need replacement</label>
-  <input type="number" v-model = "partid" required>
+  <input type="number" v-model = "part_id" required>
   <label>Request by Staff ID</label>
-  <input type="number" v-model = "staffid" required>
+  <input type="number" v-model = "staff_id" required>
   <label>Reason for requesting</label>
-    <select v-model = "reason" required>
+    <select v-model = "part_reason" required>
     <option value="Broken">Part is broken </option>
     <option value="Old">Part is old </option>
     <option value="Customer Request">Customer requested </option>
     </select>
   <br>
-    <div class="submit">
+    <div class="submit" @click = "create()">
       <button>Submit request</button>
     </div>
   </form>
@@ -22,18 +26,18 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            partid : '',
-            staffid : '',
-            reason : ''
+            part_id : '',
+            staff_id : '',
+            part_reason : ''
         }
     },
     methods : {
         create(){
-        return axios.post("http://localhost:8080/api/maintenance/create", 
+        return axios.post("http://localhost:3000/api/partrq/create", 
          {
-             partid : this.partid,
-             staffid : this.staffid,
-             reason : this.reason
+             part_id : this.part_id,
+             staff_id : this.staff_id,
+             part_reason : this.part_reason
             }).then((response) => {
               
               console.log(response.data)
@@ -49,16 +53,8 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 
-#one{
-  color: rgba(255, 255, 255, 0.931);
-  display: inline-block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-}
 
 form{
   max-width: 400px;
@@ -69,6 +65,7 @@ form{
   text-align: left;
   padding: 50px;
   border-radius: 10px;
+ 
 }
 
 label{
@@ -103,14 +100,7 @@ input, select, option{
 
 }
 
-input[type="radio"]{
-  display: inline-block;
-  width: 10px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
 
-}
 button{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: rgba(23, 64, 246, 0.924);
@@ -120,5 +110,10 @@ button{
   color: white;
   border-radius: 20px;
   
+}
+
+.submit{
+
+    text-align: center;
 }
 </style>
