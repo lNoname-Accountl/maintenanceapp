@@ -16,9 +16,13 @@
   <input type="number" v-model="staff_id" required>
 
   <br>
-    <div class="submit" @click = "create()">
-      <button>Submit</button>
+     <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
+
     </div>
+
+
 
   </form>
 </template>
@@ -45,12 +49,22 @@ export default {
             }).then((response) => {
               
               console.log(response.data)
+              this.machine_id =  ''
+              this.e_date = ''
+              this.e_reason = ''
+              this.staff_id = ''
               
             })
 
         
 
-      }
+      },
+      
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            }
     }
 
 }
@@ -114,8 +128,33 @@ button{
   border-radius: 20px;
   
 }
-.submit{
+.back{
+  
 
-    text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.submit{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  background: rgba(23, 64, 246, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  left: 230px;
 }
 </style>

@@ -7,7 +7,7 @@
   <input type="number" v-model = "service_id" required>
   <label>Repair Completeness Score</label>
     <select v-model = "r_score" required>
-    <option value="" disabled selected>Select your plan</option>
+    <option value="" disabled selected>Select your score</option>
     <option value="1">1</option>
     <option value="2">2 </option>
     <option value="3">3 </option>
@@ -16,7 +16,7 @@
     </select>
   <label>Service Score</label>
     <select v-model = "s_score" required>
-    <option value="" disabled selected>Select your plan</option>
+    <option value="" disabled selected>Select your score</option>
     <option value="1">1</option>
     <option value="2">2 </option>
     <option value="3">3 </option>
@@ -25,7 +25,7 @@
     </select>
   <label>Overall Score</label>
     <select v-model = "all_score" required>
-    <option value="" disabled selected>Select your plan</option>
+    <option value="" disabled selected>Select your score</option>
     <option value="1">1</option>
     <option value="2">2 </option>
     <option value="3">3 </option>
@@ -36,8 +36,10 @@
   <label>Other Comment</label>
   <input type="text" v-model = "comment">
   <br>
-    <div class="submit" @click = "create()">
-      <button>Submit Feedback</button>
+      <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
+
     </div>
   </form>
 </template>
@@ -73,7 +75,12 @@ export default {
 
         
 
-      }
+      },
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            }
     }
 }
 
@@ -138,8 +145,33 @@ button{
   border-radius: 20px;
   
 }
-.submit{
+.back{
+  
 
-    text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.submit{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  background: rgba(23, 64, 246, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  left: 230px;
 }
 </style>

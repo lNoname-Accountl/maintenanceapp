@@ -10,15 +10,24 @@
   <input type="text" required v-model = "branch_name" >
 
   <label>Branch Phone</label>
-  <input type="text" required v-model = "branch_phone" >
+  <input 
+  oninput="javascript: if (this.value.length != this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+  type = "number"
+  maxlength = "11"
+  v-model = "branch_phone" 
+  required
+  />
 
   <label>Branch Address</label>
   <input type="text" required v-model = "branch_address" >
 
   <br>
-    <div class="submit" @click= "postB()">
-      <button>Submit branch information</button>
+    <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
+
     </div>
+
 
  
 
@@ -37,7 +46,7 @@ export default {
         }
     },
     methods : {
-      postB(){
+      create(){
         return axios.post("http://localhost:3000/api/branch/create", 
          {
              branch_name : this.branch_name,
@@ -46,12 +55,20 @@ export default {
             }).then((response) => {
               
               console.log(response.data)
+              this.branch_name = ''
+              this.branch_phone = ''
+              this.branch_address = ''
               
             })
 
         
 
-      }
+      },
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            }
     }
 }
 </script>
@@ -61,7 +78,8 @@ export default {
 
 form{
   max-width: 420px;
-  margin: 30px;
+  position: absolute;
+  right: 50%;
   background: rgb(209, 205, 205);
   text-align: left;
   position: relative;
@@ -71,6 +89,18 @@ form{
 
 }
 
+.backb{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(255, 255, 255);
+  border: 50;
+  position: relative;
+  bottom: 50px;
+  padding: 10px 10px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+
+}
 label{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: rgb(0, 0, 0);
@@ -103,7 +133,24 @@ h3{
   font-weight: regular;
 }
 
-button{
+.back{
+  
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.submit{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   background: rgba(23, 64, 246, 0.924);
@@ -112,11 +159,7 @@ button{
   margin-top: 20px;
   color: white;
   border-radius: 20px;
-  
-}
-
-.submit{
-
-    text-align: center;
+  position: relative;
+  left: 230px;
 }
 </style>

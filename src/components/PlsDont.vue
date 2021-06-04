@@ -1,7 +1,7 @@
 <template>
     <div>
-    <h1>Don't be a dick</h1>
-    <button type ="button" v-on:click ="dice()">Back here you little shit</button>
+    <h1>Please login first </h1>
+    <button type ="button" v-on:click ="dice()">Back to Login page</button>
     </div>
 </template>
 

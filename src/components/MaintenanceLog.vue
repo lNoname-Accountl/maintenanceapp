@@ -16,8 +16,10 @@
   <label>Managed by Staff ID</label>
   <input type="number" v-model = "staff_id" required>
   <br>
-    <div class="submit" @click = "create()">
-      <button>Submit Maintenance Report</button>
+      <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
+
     </div>
   
   
@@ -49,12 +51,22 @@ export default {
             }).then((response) => {
               
               console.log(response.data)
+              this.maintenance_date = ''
+              this.machine_id = ''
+              this.description = ''
+              this.error_description = ''
+              this.staff_id =''
               
             })
 
         
 
-      }
+      },
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            }
     
   }
 
@@ -66,13 +78,14 @@ export default {
 
 
 form{
-  max-width: 400px;
-  position: relative;
-  left:570px;
-  margin: 10px;
+  max-width: 420px;
+  position: absolute;
+  right: 50%;
   background: rgb(209, 205, 205);
   text-align: left;
-  padding: 50px;
+  position: relative;
+  left: 570px;
+  padding: 40px;
   border-radius: 10px;
 
 }
@@ -119,8 +132,33 @@ button{
   border-radius: 20px;
   
 }
-.submit{
+.back{
+  
 
-    text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.submit{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  background: rgba(23, 64, 246, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  left: 230px;
 }
 </style>

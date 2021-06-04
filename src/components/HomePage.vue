@@ -1,14 +1,18 @@
 <template>
   <div class = "menu">
-    <button class = "menu-left" v-on:click = "login()">Login</button>
-    <button class = "menu-right" v-on:click = "register()">Register</button>
+    <button class = "menuOne" v-on:click = "manager()">Manager</button>
+    <button class = "menuTwo" v-on:click = "technician()">Technician</button>
+    <button class = "menuThree" v-on:click = "staff()">Staff</button>
+
     <div class = "menu-center-top" v-on:click = "aboutus()">What is fixAble?</div>
+
     <div class = "logo"><img src="../assets/Logo1.png"></div>
 
-    <div class = "background"></div>
-  </div>
-  
-  
+
+
+</div>
+
+
 
 </template>
 
@@ -20,14 +24,17 @@ export default {
         }
     },
     methods: {
-       login(){
-       this.$router.replace({name:"emergencyrepair"});
+       manager(){
+       this.$router.replace({name:"manajorall"});
        },
-       register(){
-       this.$router.replace({name:"maintenancelog"});
+       technician(){
+       this.$router.replace({name:"technicianall"});
        },
        aboutus(){
-       this.$router.replace({name:"feedback"});
+       this.$router.replace({name:"searchmachine"});
+       },
+       staff(){
+       this.$router.replace({name:"staffall"});
        },
        home(){
 
@@ -38,22 +45,20 @@ export default {
 </script>
 
 <style scoped >
-body{
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(238, 238, 238) 35%, rgb(224, 224, 224) 100%);
 
-}
+
 .menu{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     text-align: center;
 
 }
-.menu-left{
+.menuOne{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     font-size: 20px;
     text-align: center;
     color: white;
     position: absolute;
-    left: 38%;
+    left: 45.7%;
     width: 150px;
     height: 50px;
     top: 500px;
@@ -62,7 +67,7 @@ body{
   background: rgba(23, 64, 246, 0.924);
 
 }
-.menu-right{
+.menuTwo{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     font-size: 20px;
     text-align: center;
@@ -70,7 +75,23 @@ body{
   border-radius: 50px;
   color: white;
     position: absolute;
-    right: 38%;
+    right: 31%;
+    width: 150px;
+    height: 50px;
+    top: 500px;
+    border: none;
+
+}
+
+.menuThree{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+    font-size: 20px;
+    text-align: center;
+  background: rgba(23, 64, 246, 0.924);
+  border-radius: 50px;
+  color: white;
+    position: absolute;
+    right: 60%;
     width: 150px;
     height: 50px;
     top: 500px;
@@ -78,24 +99,19 @@ body{
 
 }
 .menu-center-top{
-    flex: 1;
-    position: relative;
-    top: 350px;
+    position: absolute;
+    left: 47%;
+    bottom: 50%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     color: rgba(23, 64, 246, 0.924);
-
-    text-align: center;
 }
-body{
-background-image: url("../assets/bg1.png"); 
-background-position: center center; 
-background-size: 100% 100%; 
-    }
+
 
 img{
     width: 50%;
     height: 50%;
 }
+
 
 
 </style>

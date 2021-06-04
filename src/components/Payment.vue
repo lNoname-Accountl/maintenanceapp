@@ -5,14 +5,22 @@
     </header>
     <br>
   <label>Receipt Number</label>
-  <input type="number" v-model= "receipt_number" required>
+  <input 
+  oninput="javascript: if (this.value.length != this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+  type = "number"
+  maxlength = "11"
+  v-model= "receipt_number" 
+  required
+  />
   <label>Service ID</label>
   <input type="number" v-model = "service_id" required>
   <label>Date</label>
   <input type="date" v-model = "receipt_date" required>
   <br>
-    <div class="submit" @click = "create()">
-      <button>Submit payment</button>
+      <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
+
     </div>
   </form>
 </template>
@@ -40,12 +48,20 @@ export default {
             }).then((response) => {
               
               console.log(response.data)
+              this.receipt_number = ''
+              this.service_id = ''
+              this.receipt_date = ''
               
             })
 
         
 
-      }
+      },
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            }
     }
 
 }
@@ -125,8 +141,34 @@ button{
   border-radius: 20px;
   
 }
-.submit{
+.back{
+  
 
-    text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
 }
+
+.submit{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  background: rgba(23, 64, 246, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  left: 230px;
+}
+
 </style>

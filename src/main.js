@@ -18,6 +18,18 @@ import CustomerInfo from './components/CustomerInfo.vue';
 import StaffForm from './components/StaffForm.vue';
 import Feedback from './components/Feedback.vue';
 import Payment from './components/Payment.vue';
+import SearchMachine from './components/SearchMachine.vue';
+import SearchStaff from './components/SearchStaff.vue';
+import EditStaff from './components/EditStaff.vue';
+import SearchService from './components/SearchService.vue';
+import AverageAnalysis from './components/AverageAnalysis.vue';
+import HighMaintenance from './components/HighMaintenance.vue';
+import StaffAll from './components/StaffAll.vue';
+import ManajorAll from './components/ManajorAll.vue';
+import TechnicianAll from './components/TechnicianAll.vue';
+import HighRepair from './components/HighRepair.vue';
+import HighRequest from './components/HighRequest.vue';
+import HighType from './components/HighType.vue';
 
 Vue.config.productionTip = false 
 
@@ -125,7 +137,70 @@ const router = new VueRouter({
         path: "/payment",
         name: "payment",
         component: Payment
+      },
+      {
+        path: "/searchmachine",
+        name: "searchmachine",
+        component: SearchMachine
+      },
+      {
+        path: "/searchstaff",
+        name: "searchstaff",
+        component: SearchStaff
+      },
+      {
+        path: "/editstaff",
+        name: "editstaff",
+        component: EditStaff
+      },
+      {
+        path: "/searchservice",
+        name: "searchservice",
+        component: SearchService
+      },
+      {
+        path: "/averageanalysis",
+        name: "averageanalysis",
+        component: AverageAnalysis
+      },
+      {
+        path: "/highmaintenance",
+        name: "highmaintenance",
+        component: HighMaintenance
+      },
+      {
+        path: "/staffall",
+        name: "staffall",
+        component: StaffAll
+      },
+      {
+        path: "/technicianall",
+        name: "technicianall",
+        component: TechnicianAll
+      },
+      {
+        path: "/manajorall",
+        name: "manajorall",
+        component: ManajorAll
+      },
+      {
+        path: "/highrepair",
+        name: "highrepair",
+        component: HighRepair
+      },
+      {
+        path: "/highrequest",
+        name: "highrequest",
+        component: HighRequest
+      },
+      {
+        path: "/hightype",
+        name: "hightype",
+        component: HighType
       }
+
+
+
       
 
     ]

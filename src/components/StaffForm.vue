@@ -12,7 +12,12 @@
 
 
     <label>ID No.:</label>
-    <input type= "number" required v-model = "id_card">
+    <input v-model="id_card"
+        oninput="javascript: if (this.value.length != this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type = "number"
+        maxlength = "13"
+        required
+    />
     
     <label>Gender</label>
     <div>
@@ -28,7 +33,7 @@
     
 
     <label>Select Position</label>
-    <select v-model = "position_id">
+    <select v-model = "position_id" required>
       <option value= "M001" >Manager </option>
       <option value= "T002">Technician </option>
       <option value= "S003">Staff </option>
@@ -42,15 +47,21 @@
     <input type="email" required v-model="email">
 
     <label>Phone Number:</label>
-    <input type="text" v-model = "phone">
+    <input v-model = "phone" 
+        oninput="javascript: if (this.value.length != this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        type = "number"
+        maxlength = "11"
+        required
+    />
 
     <label>Branch ID:</label>
     <input type="number" v-model = "branch_id">
     <br>
-    <div class="submit" @click = "create()">
-      <button>Submit employee information</button>
-    </div>
+      <div >
+      <button class="submit" @click= "create()">Submit</button>
+      <button class="back" type ="button" v-on:click ="dice()">Back to home</button>
 
+    </div>
   </form>
   
 </template>
@@ -85,13 +96,28 @@ export default {
             branch_id : this.branch_id
             }).then((response) => {
             console.log(response.data)
+            this.first_name = ''
+            this.last_name = ''
+            this.id_card = ''
+            this.position_id = ''
+            this.address = ''
+            this.gender = ''
+            this.email = ''
+            this.phone = ''
+            this.branch_id = ''
               
             })
 
         
 
-      }
+      },
+      dice(){
+   
+            this.$router.replace({name:"homepage"});
+               
+            
     }
+}
 }
 </script>
 
@@ -161,9 +187,34 @@ button{
   
 }
 
-.submit{
+.back{
+  
 
-    text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(255, 255, 255);
+  background: rgba(23, 64, 246, 0.924);
+
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  position: relative;
+  left: 10px;
+
+}
+
+.submit{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  background: rgba(23, 64, 246, 0.924);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  left: 230px;
 }
 </style>
 
