@@ -5,7 +5,7 @@
     <br>
     <br>
     <p>Founded in 2020 by Prakasit, Thippawan, Dhorndhan, Kantapon, and Annop. </p>
-<p>The  Company, Inc. was formed with one simple goal: provide extremely high-quality customer service at an extremely high price. </p>
+<p>The fixAble Company, Inc. was formed with one simple goal: provide extremely high-quality customer service at an extremely high price. </p>
 
 <br>
 <p>fixable’s headquartered in Norway and established in 6 countries across the globe, in close proximity to our customers. </p>

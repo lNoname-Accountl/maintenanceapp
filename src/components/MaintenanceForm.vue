@@ -63,7 +63,7 @@ export default {
         this.tempMach = '';
         },
       deleteMach(machine){
-        this.machines = this.machines.filter((item) =>{
+        this.type_machine = this.type_machine.filter((item) =>{
           return machine !== item
         })
       },

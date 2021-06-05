@@ -70,6 +70,11 @@ export default {
             }).then((response) => {
               
               console.log(response.data)
+              this.service_id = ''
+              this.r_score = ''
+              this.s_score = ''
+              this.all_score = ''
+              this.comment = ''
               
             })
 

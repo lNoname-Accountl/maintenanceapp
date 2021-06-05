@@ -1,12 +1,17 @@
 <template>
   <div class = "menu">
-    <button class = "menuOne" v-on:click = "customerinfo()">Customer Info</button>
-    <button class = "menuTwo" v-on:click = "payment()">Payment</button>
-    <button class = "menuThree" v-on:click = "maintenanceform()">Maintenance Form</button>
+    <button class = "menuOne" v-on:click = "customerinfo()">Create New Customer Info</button>
+    <button class = "menuTwo" v-on:click = "payment()">Create Receipt</button>
+    <br>
+    <br>
+    <br>
+    <button class = "menuThree" v-on:click = "maintenanceform()">Create Request</button>
+    <button class = "menuFour" v-on:click = "feedback()">Create Feedback</button>
 
-    <button class = "menuFour" v-on:click = "feedback()">Feedback</button>
+    <button class = "menuFive" v-on:click = "search()">Search Request</button>
 
-    <div class = "logo"><img src="../assets/Logo1.png"></div>
+
+    <div class = "logo" v-on:click = "homepage()"> <img src="../assets/Logo1.png"></div>
 
 
 
@@ -38,6 +43,12 @@ export default {
        },
        home(){
 
+       },
+       homepage(){
+       this.$router.replace({name:"homepage"});
+       },
+       search(){
+       this.$router.replace({name:"searchservice"});
        }
     }
 
@@ -50,15 +61,15 @@ export default {
 .menu{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     text-align: center;
-
+   
 }
 .menuOne{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     color: white;
     position: absolute;
-    left: 45.7%;
+    right: 55%;
     width: 150px;
     height: 50px;
     top: 500px;
@@ -69,13 +80,13 @@ export default {
 }
 .menuTwo{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
   background: rgba(23, 64, 246, 0.924);
   border-radius: 50px;
   color: white;
     position: absolute;
-    right: 31%;
+    right: 36%;
     width: 150px;
     height: 50px;
     top: 500px;
@@ -85,27 +96,36 @@ export default {
 
 .menuThree{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
   background: rgba(23, 64, 246, 0.924);
   border-radius: 50px;
   color: white;
     position: absolute;
-    right: 60%;
+    right: 55%;
+        bottom: 200px;
+
     width: 150px;
     height: 50px;
-    top: 500px;
     border: none;
 
 }
-.menu-center-top{
-    position: absolute;
-    left: 47%;
-    bottom: 50%;
+.menuFour{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
-    color: rgba(23, 64, 246, 0.924);
-}
+    font-size: 15px;
+    text-align: center;
+  background: rgba(23, 64, 246, 0.924);
+  border-radius: 50px;
+  color: white;
+    position: absolute;
+    right: 36%;
+        bottom: 200px;
 
+    width: 150px;
+    height: 50px;
+    border: none;
+
+}
 
 img{
     width: 50%;
