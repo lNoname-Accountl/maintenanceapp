@@ -126,7 +126,7 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
     color: white;
     border-radius: 100px;
-    background: rgba(23, 64, 246, 0.486);
+    background: rgba(95, 95, 95, 0.924);
     width: 150px;
 }
 
